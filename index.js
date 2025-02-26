@@ -59,6 +59,11 @@ app.post('/webhook', async (req, res) => {
             console.log('From:', from);
             console.log('Contact profile name:', contact.profile.name);
 
+            if (!phon_no_id || !token) {
+                console.error('Phone number ID or access token is missing');
+                return res.sendStatus(400);
+            }
+
             if (message.text) {
                 let msg_body = message.text.body;
                 console.log('Message body:', msg_body);
