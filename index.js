@@ -13,6 +13,7 @@ const mytoken = process.env.MYTOKEN;
 app.listen(PORT || process.env.PORT, async () => {
     console.log(`Server running on port ${PORT}`);
     token = await getAccessToken();
+    console.log(`New access token: ${token}`);
 });
 
 // para verificar a chamada de url feita pelo lado do dashboard - cloud api side
@@ -58,6 +59,7 @@ app.post('/webhook', async (req, res) => {
             console.log('Phone number ID:', phon_no_id);
             console.log('From:', from);
             console.log('Contact profile name:', contact.profile.name);
+            console.log('Access token:', token);
 
             if (!phon_no_id || !token) {
                 console.error('Phone number ID or access token is missing');
