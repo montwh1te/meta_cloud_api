@@ -12,7 +12,7 @@ const mytoken = process.env.MYTOKEN;
 
 app.listen(PORT || process.env.PORT, async () => {
     console.log(`Server running on port ${PORT}`);
-    token = await getAccessToken();
+    token = process.env.TOKEN;
     console.log(`New access token: ${token}`);
 });
 
@@ -78,7 +78,7 @@ app.post('/webhook', async (req, res) => {
                             messaging_product: "whatsapp",
                             to: from,
                             text: {
-                                body: `O YAGLUTH VAI TE PEGAR. Você disse: ${msg_body}`
+                                body: `Olá! Você disse: ${msg_body}`
                             }
                         },
                         headers: {
